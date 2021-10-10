@@ -1,3 +1,3 @@
-from .denoise import denoise
+from .denoise import showDenoiseDialog
 
-__all__ = ["denoise"]
+__all__ = ["showDenoiseDialog"]
