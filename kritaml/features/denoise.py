@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 
-def denoise():
+def denoise(h = 10, tSize = 7, sSize = 21):
     doc = Krita.instance().activeDocument()
 
     # Check if document is empty
@@ -25,7 +25,7 @@ def denoise():
         numpy_image = np.array(pil_image, dtype=np.uint8)
 
         # Reducing the image noise
-        processed_numpy_image = cv2.fastNlMeansDenoisingColored(numpy_image, None, 10, 10, 7, 21)
+        processed_numpy_image = cv2.fastNlMeansDenoisingColored(numpy_image, None, h, h, tSize, sSize)
 
         # Back to PIL image
         processed_image = Image.fromarray(processed_numpy_image, mode)
