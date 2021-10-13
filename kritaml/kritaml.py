@@ -12,8 +12,10 @@ class KritaMLExtension(Extension):
         pass
 
     def createActions(self, window):
-        action = window.createAction("denoise", "Reduce Image Noise", "tools/scripts")
-        action.triggered.connect(showDenoiseDialog)
+        denoise_action = window.createAction("denoise", "Reduce Image Noise", "tools/scripts")
+        denoise_action.triggered.connect(showDenoiseDialog)
+        dehaze_action = window.createAction("dehaze", "Remove Haze", "tools/scripts")
+        dehaze_action.triggered.connect(dehaze)
 
 
 # And add the extension to Krita's list of extensions:
