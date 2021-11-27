@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=kritaml
+X-Python-2-Compatible=false
+Name=Krita ML Plugin
+Comment=Plugin which uses ML to facilitate image editing.
