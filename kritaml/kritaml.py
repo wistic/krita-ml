@@ -13,10 +13,11 @@ class KritaMLExtension(Extension):
 
     def createActions(self, window):
         denoise_action = window.createAction("denoise", "Reduce Image Noise", "tools/scripts")
-        denoise_action.triggered.connect(showDenoiseDialog)
+        denoise_action.triggered.connect(apply_denoise)
         dehaze_action = window.createAction("dehaze", "Remove Haze", "tools/scripts")
-        dehaze_action.triggered.connect(dehaze)
-
+        dehaze_action.triggered.connect(apply_dehaze)
+        monodepth_action = window.createAction("monodepth", "Monodepth", "tools/scripts")
+        monodepth_action.triggered.connect(apply_monodepth)
 
 # And add the extension to Krita's list of extensions:
 Krita.instance().addExtension(KritaMLExtension(Krita.instance()))

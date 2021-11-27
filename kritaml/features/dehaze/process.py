@@ -3,6 +3,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim
+from krita import *
 from PIL import Image
 
 
@@ -40,7 +41,7 @@ class net_dehaze_net(nn.Module):
         return clean_image
 
 
-def dehaze():
+def apply_dehaze():
     doc = Krita.instance().activeDocument()
     if doc is not None:
         layer = doc.activeNode()
@@ -63,7 +64,7 @@ def dehaze():
         data_hazy = data_hazy.cuda().unsqueeze(0)
         dehaze_net = net_dehaze_net().cuda()
         krita_cwd = os.path.dirname(os.path.realpath(__file__))
-        model_path = os.path.join(krita_cwd, 'models/dehazer.pth')
+        model_path = os.path.join(krita_cwd, 'weights.pth')
         dehaze_net.load_state_dict(torch.load(model_path))
         clean_image = dehaze_net(data_hazy)
 
