@@ -13,7 +13,8 @@ Steps:
 5. Copy `kritaml` directory, `kritaml.action`  file and `kritaml.desktop` file of cloned repository to `$resource_folder/pykrita`
 6. Download [Monodepth model weights](https://github.com/intel-isl/DPT/releases/download/1_0/dpt_hybrid-midas-501f0c75.pt) and place it in `$resource_folder/pykrita/kritaml/features/monodepth/` directory. Name the file as `weights.pt`. Finally the file will be placed as `$resource_folder/pykrita/kritaml/features/monodepth/weights.pt`
 7. Download [Dehazer model weights](https://github.com/MayankSingal/PyTorch-Image-Dehazing/blob/master/snapshots/dehazer.pth) and place it in `$resource_folder/pykrita/kritaml/features/dehaze` directory. Name the file as `weights.pt`. Finally the file will be placed as `$resource_folder/pykrita/kritaml/features/dehaze/weights.pt`
-8. Restart `Krita`
-9. Go to `Settings->Configure Krita`. Enable `Krita ML Plugin` in the `Python Plugin Manager`.
+8. Install all the necessary pip packages by running `pip install -r requirements.txt`.
+9. Restart `Krita`
+10. Go to `Settings->Configure Krita`. Enable `Krita ML Plugin` in the `Python Plugin Manager`.
 
 Now the plugin in enabled and all options should be available in `Tool->Scripts`
