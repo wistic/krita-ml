@@ -1,3 +1,6 @@
 **/__pycache__/
 .idea/
 **/*.pt
+**/*.prototxt
+**/*.caffemodel
+**/*.npy

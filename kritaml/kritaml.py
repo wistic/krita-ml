@@ -18,6 +18,10 @@ class KritaMLExtension(Extension):
         dehaze_action.triggered.connect(apply_dehaze)
         monodepth_action = window.createAction("monodepth", "Monodepth", "tools/scripts")
         monodepth_action.triggered.connect(apply_monodepth)
+        recolor_action = window.createAction("recolor", "Recolor", "tools/scripts")
+        recolor_action.triggered.connect(apply_recolor)
+        cartoon_action = window.createAction("cartoon", "Cartoon", "tools/scripts")
+        cartoon_action.triggered.connect(apply_cartoon)
 
 # And add the extension to Krita's list of extensions:
 Krita.instance().addExtension(KritaMLExtension(Krita.instance()))
