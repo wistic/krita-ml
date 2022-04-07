@@ -6,15 +6,10 @@ This requirement will be removed when we are able to install python packages dir
 
 Steps:
 
-1. Install `Krita`
-2. Install also the optional dependency `python-pyqt5` for Python Plugins
-3. Open the `Krita` resource directory by going to `Settings->Configure Krita`. In the `Resource` tab of `General` section, open the `Resource Folder` location in File Browser. Lets say the resource folder is `$resource_folder`
-4. Clone [Krita-ML repository](https://github.com/wistic/krita-ml.git) and extract it.
-5. Copy `kritaml` directory, `kritaml.action`  file and `kritaml.desktop` file of cloned repository to `$resource_folder/pykrita`
-6. Download [Monodepth model weights](https://github.com/intel-isl/DPT/releases/download/1_0/dpt_hybrid-midas-501f0c75.pt) and place it in `$resource_folder/pykrita/kritaml/features/monodepth/` directory. Name the file as `weights.pt`. Finally the file will be placed as `$resource_folder/pykrita/kritaml/features/monodepth/weights.pt`
-7. Download [Dehazer model weights](https://github.com/MayankSingal/PyTorch-Image-Dehazing/blob/master/snapshots/dehazer.pth) and place it in `$resource_folder/pykrita/kritaml/features/dehaze` directory. Name the file as `weights.pt`. Finally the file will be placed as `$resource_folder/pykrita/kritaml/features/dehaze/weights.pt`
-8. Install all the necessary pip packages by running `pip install -r requirements.txt`.
-9. Restart `Krita`
-10. Go to `Settings->Configure Krita`. Enable `Krita ML Plugin` in the `Python Plugin Manager`.
+1. Install `Krita`.
+2. Install the optional dependency `python-pyqt5` for Python Plugins.
+3. Download the [plugin](https://github.com/wistic/krita-ml/releases/download/Alpha/kritaml.zip) and [`requirements.txt`](https://github.com/wistic/krita-ml/releases/download/Alpha/requirements.txt) file from releases section of this repo.
+4. Install all the necessary pip packages by running `pip install -r requirements.txt`.
+5. Install the plugin by using [Python Plugin Importer.](https://docs.krita.org/en/user_manual/python_scripting/install_custom_python_plugin.html#using-python-plugin-importer). 
 
-Now the plugin in enabled and all options should be available in `Tool->Scripts`
+Now the plugin in enabled and all options should be available in `Tool->Scripts->Krita-ML`.
