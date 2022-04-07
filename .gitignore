@@ -4,3 +4,5 @@
 **/*.prototxt
 **/*.caffemodel
 **/*.npy
+**/*.pb
+**/*.pth

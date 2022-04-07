@@ -20,6 +20,8 @@ class KritaMLExtension(Extension):
         monodepth_action.triggered.connect(apply_monodepth)
         recolor_action = window.createAction("recolor", "Recolor", "tools/scripts")
         recolor_action.triggered.connect(apply_recolor)
+        super_resolution_action = window.createAction("super_resolution", "Super Resolution", "tools/scripts")
+        super_resolution_action.triggered.connect(apply_super_resolution)
         cartoon_action = window.createAction("cartoon", "Cartoon", "tools/scripts")
         cartoon_action.triggered.connect(apply_cartoon)
 
