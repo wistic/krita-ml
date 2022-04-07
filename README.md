@@ -7,7 +7,7 @@ This requirement will be removed when we are able to install python packages dir
 Steps:
 
 1. Install `Krita`.
-2. Install the optional dependency `python-pyqt5` for Python Plugins.
+2. Install the optional dependency `python3-pyqt5` for Python Plugins.
 3. Download the [plugin](https://github.com/wistic/krita-ml/releases/download/Alpha/kritaml.zip) and [`requirements.txt`](https://github.com/wistic/krita-ml/releases/download/Alpha/requirements.txt) file from releases section of this repo.
 4. Install all the necessary pip packages by running `pip install -r requirements.txt`.
 5. Install the plugin by using [Python Plugin Importer.](https://docs.krita.org/en/user_manual/python_scripting/install_custom_python_plugin.html#using-python-plugin-importer). 
