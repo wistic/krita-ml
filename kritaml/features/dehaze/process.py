@@ -5,6 +5,7 @@ import torch.nn as nn
 import torch.optim
 from krita import *
 from PIL import Image
+from ..util import launch_loader, Worker
 
 
 class net_dehaze_net(nn.Module):
@@ -41,18 +42,12 @@ class net_dehaze_net(nn.Module):
         return clean_image
 
 
-def apply_dehaze():
-    doc = Krita.instance().activeDocument()
-    if doc is not None:
-        layer = doc.activeNode()
-        width = doc.width()
-        height = doc.height()
+class DehazeWorker(Worker):
 
-        pixel_data = layer.pixelData(0, 0, width, height)
-
+    def run(self):
         mode = "RGBA"
-        size = (width, height)
-        pil_image = Image.frombytes(mode, size, pixel_data)
+        size = (self.width, self.height)
+        pil_image = Image.frombytes(mode, size, self.pixel_data)
 
         alpha_composite = pil_image.convert('RGB')
 
@@ -64,7 +59,7 @@ def apply_dehaze():
         data_hazy = data_hazy.cuda().unsqueeze(0)
         dehaze_net = net_dehaze_net().cuda()
         krita_cwd = os.path.dirname(os.path.realpath(__file__))
-        model_path = os.path.join(krita_cwd, 'weights.pt')
+        model_path = os.path.join(krita_cwd, 'dehaze-weights.pt')
         dehaze_net.load_state_dict(torch.load(model_path))
         clean_image = dehaze_net(data_hazy)
 
@@ -74,9 +69,12 @@ def apply_dehaze():
         magic_image = Image.fromarray(clean_array, "RGB")
 
         magic_image.putalpha(255)
+        self.result = magic_image.tobytes()
 
-        magic_pixel_data = magic_image.tobytes()
 
-        # ...which we can then send back to Krita.
-        layer.setPixelData(magic_pixel_data, 0, 0, width, height)
-        doc.refreshProjection()
+def apply_dehaze():
+    doc = Krita.instance().activeDocument()
+    if doc is not None:
+        worker = DehazeWorker(doc)
+        launch_loader(worker)
+        worker.apply_changes()
